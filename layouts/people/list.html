@@ -1,4 +1,4 @@
-{{/* People list: auto-sorts current vs. alumni based on front matter status field */}}
+{{/* People list: groups current members by role, then shows alumni */}}
 {{ define "main" }}
 <header class="mb-8">
   <h1 class="text-3xl font-bold text-neutral-800 dark:text-neutral-100">{{ .Title }}</h1>
@@ -8,23 +8,42 @@
   {{ with .Content }}<div class="mt-4 prose dark:prose-invert">{{ . }}</div>{{ end }}
 </header>
 
-{{/* Partition pages by status */}}
 {{ $all     := .Pages.ByParam "weight" }}
 {{ $current := where $all ".Params.status" "current" }}
 {{ $alumni  := where $all ".Params.status" "alumni" }}
 
-{{/* ── Current Members ─────────────────────────────────────────────── */}}
-{{ if $current }}
-<section class="mb-12">
-  <h2 class="text-2xl font-semibold mb-6 text-neutral-800 dark:text-neutral-100 border-b border-neutral-200 dark:border-neutral-700 pb-2">
-    Current Members
-  </h2>
-  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    {{ range $current }}
-    {{ partial "people/person-card.html" . }}
+{{/* Role groups — order here controls order on page.
+     Add more roles to a slice to catch alternate spellings. */}}
+{{ $groups := slice
+  (dict "label" "Principal Investigator"  "roles" (slice "Principal Investigator"))
+  (dict "label" "Postdoctoral Researchers" "roles" (slice "Postdoctoral Researcher" "Postdoc"))
+  (dict "label" "Graduate Students"        "roles" (slice "PhD Student" "MS Student" "Graduate Student"))
+  (dict "label" "Undergraduate Students"   "roles" (slice "Undergraduate Student" "Undergraduate" "Undergrad"))
+  (dict "label" "Lab Technicians"          "roles" (slice "Lab Technician" "Research Technician" "Technician"))
+}}
+
+{{ range $groups }}
+  {{ $label := .label }}
+  {{ $roles := .roles }}
+  {{ $members := slice }}
+  {{ range $current }}
+    {{ if in $roles .Params.role }}
+      {{ $members = $members | append . }}
     {{ end }}
-  </div>
-</section>
+  {{ end }}
+
+  {{ if $members }}
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-6 text-neutral-800 dark:text-neutral-100 border-b border-neutral-200 dark:border-neutral-700 pb-2">
+      {{ $label }}
+    </h2>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {{ range $members }}
+        {{ partial "people/person-card.html" . }}
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
 {{ end }}
 
 {{/* ── Alumni ───────────────────────────────────────────────────────── */}}
@@ -35,9 +54,10 @@
   </h2>
   <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     {{ range $alumni }}
-    {{ partial "people/person-card.html" . }}
+      {{ partial "people/person-card.html" . }}
     {{ end }}
   </div>
 </section>
 {{ end }}
+
 {{ end }}
