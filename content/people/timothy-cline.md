@@ -4,10 +4,10 @@ date: 2023-01-01
 role: "Principal Investigator"
 status: "current"          # current | alumni
 year_started: 2023
-photo: "img/people/timothy-cline.jpg"   # place photo in assets/img/people/
+photo: "img/people/timothy-cline.jpg" 
 email: "timothy.cline2@montana.edu"
 links:
-  scholar: "https://scholar.google.com/citations?user=HQlTKrIAAAAJ&hl=en"
+  Google Scholar: "https://scholar.google.com/citations?user=HQlTKrIAAAAJ&hl=en"
   github: "https://github.com/timothycline"
   website: "https://www.montana.edu/ecology/directory/faculty/2363959/timothy-cline"
 weight: 1                  # controls sort order on the page (PI = 1)

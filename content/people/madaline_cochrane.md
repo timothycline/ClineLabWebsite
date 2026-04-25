@@ -8,7 +8,7 @@ year_ended: 2025
 photo: "img/people/maddy-cochrane.jpg"
 email: ""
 links:
-  scholar: "https://scholar.google.com/citations?user=HV6sYuMAAAAJ&hl=en"
+  Google Scholar: "https://scholar.google.com/citations?user=HV6sYuMAAAAJ&hl=en"
 current_position: "Postdoctoral Researcher, University of Montana"
 weight: 20
 ---
