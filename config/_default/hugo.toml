@@ -1,6 +1,5 @@
-baseURL = "https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO-NAME/"
-# ^ Replace with your actual GitHub Pages URL, e.g. https://clinelab.github.io/website/
-# If you use a custom domain (e.g. clinelab.montana.edu), put that here instead.
+baseURL = "https://timothycline.github.io/ClineLabWebsite/"
+# If you later set up a custom domain (e.g. clinelab.montana.edu), update this line.
 
 languageCode = "en"
 defaultContentLanguage = "en"

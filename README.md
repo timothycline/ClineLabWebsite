@@ -141,7 +141,7 @@ Options: `ocean`, `avocado`, `fire`, `forest`, `princess`, `slate`, `terminal`, 
 3. Push this folder:
 
 ```bash
-git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
+git remote add origin git@github.com:timothycline/ClineLabWebsite.git
 git push -u origin main
 ```
 
