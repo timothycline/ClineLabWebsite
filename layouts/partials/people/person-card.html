@@ -3,7 +3,7 @@
   {{/* Photo */}}
   {{ with .Params.photo }}
   <img src="{{ . | absURL }}" alt="Photo of {{ $.Title }}"
-       class="w-24 h-24 rounded-full object-cover mb-4 mx-auto sm:mx-0">
+       class="w-40 h-40 rounded-full object-cover mb-4 mx-auto">
   {{ else }}
   {{/* Placeholder avatar if no photo provided */}}
   <div class="w-24 h-24 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center mb-4 mx-auto sm:mx-0">

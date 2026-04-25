@@ -31,17 +31,12 @@
 {{ end }}
 
 {{ if $banner }}
-  {{/* Resize to banner dimensions: wide, moderate height, webp for speed */}}
   {{ $img := $banner.Resize "1400x350 webp q85 Center" }}
-  <div class="w-full -mx-6 sm:-mx-14 md:-mx-24 lg:-mx-32 overflow-hidden"
-       style="max-width: calc(100% + 4rem);">
+  <div style="width:100vw; position:relative; left:50%; transform:translateX(-50%); height:280px; overflow:hidden; margin-bottom:1.5rem;">
     <img
       src="{{ $img.RelPermalink }}"
       alt="{{ .Title }} banner"
-      width="{{ $img.Width }}"
-      height="{{ $img.Height }}"
-      class="w-full object-cover"
-      style="height: 280px; object-position: center;"
+      style="width:100%; height:100%; object-fit:cover; object-position:center; display:block;"
       loading="eager">
   </div>
 {{ end }}

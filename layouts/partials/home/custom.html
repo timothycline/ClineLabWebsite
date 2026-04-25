@@ -9,11 +9,13 @@
 {{ if $slides }}
 {{ $processed := slice }}
 {{ range $slides }}
-  {{ $img := .Resize "1400x600 webp q85 Center" }}
-  {{ $processed = $processed | append $img }}
+  {{ if eq .MediaType.MainType "image" }}
+    {{ $img := .Resize "1400x600 webp q85 Center" }}
+    {{ $processed = $processed | append $img }}
+  {{ end }}
 {{ end }}
 
-<div class="-mx-6 sm:-mx-14 md:-mx-24 lg:-mx-32 mb-10 overflow-hidden"
+<div style="width:100vw; position:relative; left:50%; transform:translateX(-50%); margin-bottom:2.5rem; overflow:hidden;"
      x-data="{
        current: 0,
        total: {{ len $processed }},
