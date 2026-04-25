@@ -1,0 +1,43 @@
+{{/* People list: auto-sorts current vs. alumni based on front matter status field */}}
+{{ define "main" }}
+<header class="mb-8">
+  <h1 class="text-3xl font-bold text-neutral-800 dark:text-neutral-100">{{ .Title }}</h1>
+  {{ with .Description }}
+  <p class="mt-2 text-neutral-600 dark:text-neutral-400">{{ . }}</p>
+  {{ end }}
+  {{ with .Content }}<div class="mt-4 prose dark:prose-invert">{{ . }}</div>{{ end }}
+</header>
+
+{{/* Partition pages by status */}}
+{{ $all     := .Pages.ByParam "weight" }}
+{{ $current := where $all ".Params.status" "current" }}
+{{ $alumni  := where $all ".Params.status" "alumni" }}
+
+{{/* ── Current Members ─────────────────────────────────────────────── */}}
+{{ if $current }}
+<section class="mb-12">
+  <h2 class="text-2xl font-semibold mb-6 text-neutral-800 dark:text-neutral-100 border-b border-neutral-200 dark:border-neutral-700 pb-2">
+    Current Members
+  </h2>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {{ range $current }}
+    {{ partial "people/person-card.html" . }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{/* ── Alumni ───────────────────────────────────────────────────────── */}}
+{{ if $alumni }}
+<section>
+  <h2 class="text-2xl font-semibold mb-6 text-neutral-800 dark:text-neutral-100 border-b border-neutral-200 dark:border-neutral-700 pb-2">
+    Alumni
+  </h2>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {{ range $alumni }}
+    {{ partial "people/person-card.html" . }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+{{ end }}

@@ -1,0 +1,46 @@
+{{ define "main" }}
+<header class="mb-8">
+  <h1 class="text-3xl font-bold text-neutral-800 dark:text-neutral-100">{{ .Title }}</h1>
+  {{ with .Description }}
+  <p class="mt-2 text-neutral-600 dark:text-neutral-400">{{ . }}</p>
+  {{ end }}
+  {{ with .Content }}<div class="mt-4 prose dark:prose-invert">{{ . }}</div>{{ end }}
+</header>
+
+{{/* Sort by year (newest first) using date field */}}
+{{ range .Pages.ByDate.Reverse }}
+<article class="mb-6 pb-6 border-b border-neutral-200 dark:border-neutral-700 last:border-0">
+  <h3 class="font-semibold text-neutral-800 dark:text-neutral-100 text-lg leading-snug mb-1">
+    <a href="{{ .Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
+      {{ .Title }}
+    </a>
+  </h3>
+  {{ with .Params.authors }}
+  <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
+    {{ delimit . ", " }}
+  </p>
+  {{ end }}
+  <p class="text-sm text-neutral-500 dark:text-neutral-400 italic mb-2">
+    {{ with .Params.journal }}{{ . }}{{ end }}
+    {{ with .Params.volume }}, {{ . }}{{ end }}
+    {{ with .Params.issue }}({{ . }}){{ end }}
+    {{ with .Params.pages }}: {{ . }}{{ end }}
+    {{ with .Params.year }} ({{ . }}){{ end }}
+  </p>
+  <div class="flex flex-wrap gap-2">
+    {{ with .Params.doi }}
+    <a href="https://doi.org/{{ . }}" target="_blank" rel="noopener"
+       class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition">
+      DOI ↗
+    </a>
+    {{ end }}
+    {{ with .Params.pdf }}
+    <a href="{{ . }}" target="_blank" rel="noopener"
+       class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition">
+      PDF ↗
+    </a>
+    {{ end }}
+  </div>
+</article>
+{{ end }}
+{{ end }}

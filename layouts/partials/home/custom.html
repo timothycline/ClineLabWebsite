@@ -1,0 +1,116 @@
+{{/* Custom homepage layout for Cline Lab */}}
+
+{{/* ── Hero / Lab Intro ─────────────────────────────────────────────── */}}
+<section class="mb-12">
+  <div class="max-w-3xl">
+    <h1 class="text-4xl font-bold mb-4 text-neutral-800 dark:text-neutral-100">
+      Fisheries Ecology at MSU
+    </h1>
+    <p class="text-xl text-neutral-600 dark:text-neutral-400 mb-2 font-medium">
+      Cline Lab &mdash; Department of Ecology, Montana State University
+    </p>
+    <p class="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6">
+      We study the ecology and management of cold-water fishes &mdash; particularly salmonids &mdash;
+      in the face of climate change, habitat fragmentation, and shifting land use. Our work combines
+      long-term field studies, physiological experiments, and quantitative modeling to answer questions
+      that matter for conservation and sustainable fisheries.
+    </p>
+    <div class="flex flex-wrap gap-3">
+      <a href="/research/"
+         class="rounded-md bg-primary-600 px-5 py-2 text-sm font-semibold text-white shadow hover:bg-primary-500 transition">
+        Our Research
+      </a>
+      <a href="/people/"
+         class="rounded-md border border-neutral-300 dark:border-neutral-600 px-5 py-2 text-sm font-semibold text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition">
+        Meet the Team
+      </a>
+    </div>
+  </div>
+</section>
+
+{{/* ── Recent News ──────────────────────────────────────────────────── */}}
+{{ $news := where site.RegularPages "Section" "news" }}
+{{ $recent := first 3 $news }}
+{{ if $recent }}
+<section class="mb-12">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-2xl font-bold text-neutral-800 dark:text-neutral-100">Recent News</h2>
+    <a href="/news/" class="text-sm text-primary-600 dark:text-primary-400 hover:underline">
+      All news &rarr;
+    </a>
+  </div>
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {{ range $recent }}
+    <article class="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-5 shadow-sm hover:shadow-md transition">
+      <time class="text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+        {{ .Date.Format "January 2, 2006" }}
+      </time>
+      <h3 class="mt-2 font-semibold text-neutral-800 dark:text-neutral-100 leading-snug">
+        <a href="{{ .Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
+          {{ .Title }}
+        </a>
+      </h3>
+      {{ if .Summary }}
+      <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400 line-clamp-3">
+        {{ .Summary | plainify }}
+      </p>
+      {{ end }}
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{/* ── Featured Projects ────────────────────────────────────────────── */}}
+{{ $projects := where site.RegularPages "Section" "projects" }}
+{{ $featured := where $projects ".Params.featured" true }}
+{{ if $featured }}
+<section class="mb-12">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-2xl font-bold text-neutral-800 dark:text-neutral-100">Featured Projects &amp; Tools</h2>
+    <a href="/projects/" class="text-sm text-primary-600 dark:text-primary-400 hover:underline">
+      All projects &rarr;
+    </a>
+  </div>
+  <div class="grid gap-6 sm:grid-cols-2">
+    {{ range $featured }}
+    <article class="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-6 shadow-sm hover:shadow-md transition">
+      <h3 class="font-bold text-neutral-800 dark:text-neutral-100 text-lg leading-snug mb-2">
+        <a href="{{ .Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
+          {{ .Title }}
+        </a>
+      </h3>
+      {{ if .Params.description }}
+      <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
+        {{ .Params.description }}
+      </p>
+      {{ end }}
+      <div class="flex flex-wrap gap-2">
+        {{ with .Params.links.github }}
+        <a href="{{ . }}" class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition"
+           target="_blank" rel="noopener">GitHub</a>
+        {{ end }}
+        {{ with .Params.links.demo }}
+        <a href="{{ . }}" class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition"
+           target="_blank" rel="noopener">Live Demo</a>
+        {{ end }}
+        {{ with .Params.links.paper }}
+        <a href="{{ . }}" class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition">
+          Paper</a>
+        {{ end }}
+      </div>
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{/* ── Quick Links Footer ───────────────────────────────────────────── */}}
+<section class="rounded-xl bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700 p-6">
+  <p class="text-neutral-700 dark:text-neutral-300 text-sm">
+    <strong>Interested in joining the lab?</strong>
+    We welcome inquiries from prospective graduate students and postdocs.
+    See the <a href="/people/" class="text-primary-600 dark:text-primary-400 hover:underline">People page</a>
+    for current openings, or <a href="mailto:timothy.cline@montana.edu" class="text-primary-600 dark:text-primary-400 hover:underline">email Tim directly</a>.
+  </p>
+</section>

@@ -1,0 +1,24 @@
+[[main]]
+  name = "Research"
+  url = "/research/"
+  weight = 10
+
+[[main]]
+  name = "People"
+  url = "/people/"
+  weight = 20
+
+[[main]]
+  name = "Publications"
+  url = "/publications/"
+  weight = 30
+
+[[main]]
+  name = "Projects"
+  url = "/projects/"
+  weight = 40
+
+[[main]]
+  name = "News"
+  url = "/news/"
+  weight = 50

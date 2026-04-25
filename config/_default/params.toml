@@ -1,0 +1,55 @@
+# ---------------------------------------------------------------------------
+# Blowfish theme parameters
+# Full reference: https://blowfish.page/docs/configuration/
+# ---------------------------------------------------------------------------
+
+colorScheme = "ocean"
+# Other options: avocado, fire, forest, princess, slate, terminal, tide, tokyonight
+# Preview all at: https://blowfish.page/docs/getting-started/#colour-schemes
+
+defaultAppearance = "light"   # "light" | "dark"
+autoSwitchAppearance = true   # follows OS dark/light mode
+
+enableSearch = true
+enableCodeCopy = true
+
+# Shown below the site title in the header
+[homepage]
+  layout = "custom"   # we'll use a custom homepage layout
+  showRecent = true
+  recentLimit = 5
+
+[header]
+  layout = "basic"
+
+[footer]
+  showCopyright = true
+  showThemeAttribution = false
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+[article]
+  showDate = true
+  showAuthor = false
+  showReadingTime = false
+  showTableOfContents = false
+  showEdit = false
+
+[list]
+  showCards = true
+  groupByYear = false
+
+# ---------------------------------------------------------------------------
+# Social / contact links — shown in footer and optionally on about page
+# Replace placeholder values with real ones
+# ---------------------------------------------------------------------------
+[author]
+  name = "Timothy Cline"
+  image = "img/pi-headshot.jpg"
+  headline = "Assistant Professor, Dept. of Ecology, Montana State University"
+  bio = "Cold-water fish ecologist studying population dynamics, climate adaptation, and fisheries management."
+  links = [
+    { scholar = "https://scholar.google.com/citations?user=PLACEHOLDER" },
+    { github  = "https://github.com/PLACEHOLDER" },
+    { email   = "mailto:timothy.cline@montana.edu" },
+  ]
