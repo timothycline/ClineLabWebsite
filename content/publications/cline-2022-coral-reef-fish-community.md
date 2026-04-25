@@ -7,6 +7,7 @@ volume: 6
 pages: "1700–1709"
 year: 2022
 doi: "10.1038/s41559-022-01882-0"
+image: "img/publications/cline-2022-coral-reef-fish-community.jpg"
 tags: ["coral reef", "fish community", "resilience", "ecosystem dynamics"]
 featured: true
 ---

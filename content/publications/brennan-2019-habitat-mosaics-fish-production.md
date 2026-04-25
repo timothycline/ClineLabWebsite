@@ -7,6 +7,7 @@ volume: 364
 pages: "783–786"
 year: 2019
 doi: "10.1126/science.aav4313"
+image: "img/publications/brennan-2019-habitat-mosaics-fish-production.jpg"
 tags: ["habitat mosaics", "fish production", "river basins", "isotopes"]
 featured: false
 ---

@@ -7,6 +7,7 @@ volume: 8
 pages: "eabn1396"
 year: 2022
 doi: "10.1126/sciadv.abn1396"
+image: "img/publications/cline-2022-socioeconomic-resilience-fishery.jpg"
 tags: ["socioeconomic resilience", "climate extremes", "freshwater fishery", "trout"]
 featured: true
 ---

@@ -7,6 +7,7 @@ volume: 290
 pages: "20222248"
 year: 2023
 doi: "10.1098/rspb.2022.2248"
+image: "img/publications/ohlberger-2023-sockeye-body-size-decline.jpg"
 tags: ["sockeye salmon", "body size", "ocean competition", "climate change"]
 featured: false
 ---

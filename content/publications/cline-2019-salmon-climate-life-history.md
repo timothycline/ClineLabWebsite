@@ -7,6 +7,7 @@ volume: 3
 pages: "935–942"
 year: 2019
 doi: "10.1038/s41559-019-0901-7"
+image: "img/publications/cline-2019-salmon-climate-life-history.jpg"
 tags: ["Pacific salmon", "climate change", "life history", "ocean competition"]
 featured: true
 ---

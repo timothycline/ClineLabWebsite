@@ -7,6 +7,7 @@ volume: ""
 pages: ""
 year: 2025
 doi: "10.1002/eap.70103"
+image: "img/publications/cochrane-2025-bull-trout-population-dynamics.jpg"
 tags: ["bull trout", "density dependence", "population dynamics", "cold-water fish"]
 featured: false
 ---

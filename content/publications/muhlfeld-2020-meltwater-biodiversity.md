@@ -7,6 +7,7 @@ volume: ""
 pages: ""
 year: 2020
 doi: "10.1073/pnas.2001697117"
+image: "img/publications/muhlfeld-2020-meltwater-biodiversity.jpg"
 tags: ["meltwater", "biodiversity", "deglaciation", "climate change", "alpine"]
 featured: true
 ---

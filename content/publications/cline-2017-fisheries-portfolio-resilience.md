@@ -7,6 +7,7 @@ volume: 8
 pages: "14042"
 year: 2017
 doi: "10.1038/ncomms14042"
+image: "img/publications/cline-2017-fisheries-portfolio-resilience.jpg"
 tags: ["portfolio diversification", "resilience", "Alaska", "fishing communities", "salmon"]
 featured: true
 ---
