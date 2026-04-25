@@ -6,7 +6,7 @@ journal: "PLoS One"
 volume: 10
 pages: "e0136985"
 year: 2015
-doi: ""
+doi: "10.1371/journal.pone.0136985"
 tags: ["salmonids", "movement ecology", "riverscape", "boreal"]
 featured: false
 ---

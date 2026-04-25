@@ -6,7 +6,7 @@ journal: "Science Advances"
 volume: 6
 pages: "eaax8329"
 year: 2020
-doi: ""
+doi: "10.1126/sciadv.aax8329"
 tags: ["individual behavior", "ecosystem function", "exploitation", "fish"]
 featured: false
 ---

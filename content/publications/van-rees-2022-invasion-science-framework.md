@@ -6,7 +6,7 @@ journal: "Biological Reviews"
 volume: 97
 pages: "1712–1735"
 year: 2022
-doi: ""
+doi: "10.1111/brv.12859"
 tags: ["invasion science", "invasive species", "management", "framework"]
 featured: false
 ---

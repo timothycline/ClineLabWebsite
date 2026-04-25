@@ -6,7 +6,7 @@ journal: "Canadian Journal of Fisheries and Aquatic Sciences"
 volume: 79
 pages: "1729–1744"
 year: 2022
-doi: ""
+doi: "10.1139/cjfas-2021-0343"
 tags: ["salmonids", "body size", "stream temperature", "climate"]
 featured: false
 ---

@@ -6,7 +6,7 @@ journal: "Science Advances"
 volume: 7
 pages: "aabj5471"
 year: 2021
-doi: ""
+doi: "10.1126/sciadv.abj5471"
 tags: ["native trout", "climate change", "invasive species", "Rocky Mountains", "decline"]
 featured: true
 ---

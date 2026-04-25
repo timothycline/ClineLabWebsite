@@ -6,7 +6,7 @@ journal: "Limnology and Oceanography"
 volume: 57
 pages: "1443–1452"
 year: 2012
-doi: ""
+doi: "10.4319/lo.2012.57.5.1443"
 tags: ["food web", "lake productivity", "limnology"]
 featured: false
 ---

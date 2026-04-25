@@ -6,7 +6,7 @@ journal: "Journal of Evolutionary Biology"
 volume: 31
 pages: "239–253"
 year: 2018
-doi: ""
+doi: "10.1111/jeb.13217"
 tags: ["sockeye salmon", "reproductive tactics", "stream geomorphology", "life history"]
 featured: false
 ---

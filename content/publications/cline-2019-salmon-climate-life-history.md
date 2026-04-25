@@ -6,7 +6,7 @@ journal: "Nature Ecology & Evolution"
 volume: 3
 pages: "935–942"
 year: 2019
-doi: ""
+doi: "10.1038/s41559-019-0901-7"
 tags: ["Pacific salmon", "climate change", "life history", "ocean competition"]
 featured: true
 ---

@@ -6,7 +6,7 @@ journal: "Science"
 volume: 366
 pages: "eaay9321"
 year: 2019
-doi: ""
+doi: "10.1126/science.aay9321"
 tags: ["coral reef", "fish demographics", "ecosystem function"]
 featured: false
 ---

@@ -6,7 +6,7 @@ journal: "North American Journal of Fisheries Management"
 volume: 31
 pages: "1110–1115"
 year: 2011
-doi: ""
+doi: "10.1080/02755947.2011.642491"
 tags: ["recreational fisheries", "catch inequality", "trout"]
 featured: false
 ---

@@ -6,7 +6,7 @@ journal: "Ecosystems"
 volume: 15
 pages: "741–747"
 year: 2012
-doi: ""
+doi: "10.1007/s10021-012-9542-2"
 tags: ["regime shifts", "early warnings", "whole-ecosystem"]
 featured: false
 ---

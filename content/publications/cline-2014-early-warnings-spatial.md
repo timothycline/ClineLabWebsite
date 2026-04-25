@@ -6,7 +6,7 @@ journal: "Ecosphere"
 volume: 5
 pages: "102"
 year: 2014
-doi: ""
+doi: "10.1890/es13-00398.1"
 tags: ["early warnings", "regime shifts", "spatial indicators", "whole-ecosystem"]
 featured: false
 ---

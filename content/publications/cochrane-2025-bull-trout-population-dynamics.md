@@ -6,7 +6,7 @@ journal: "Ecological Applications"
 volume: ""
 pages: ""
 year: 2025
-doi: ""
+doi: "10.1002/eap.70103"
 tags: ["bull trout", "density dependence", "population dynamics", "cold-water fish"]
 featured: false
 ---

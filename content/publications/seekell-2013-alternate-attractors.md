@@ -6,7 +6,7 @@ journal: "Theoretical Ecology"
 volume: 6
 pages: "385–394"
 year: 2013
-doi: ""
+doi: "10.1007/s12080-013-0183-7"
 tags: ["alternate attractors", "regime shifts", "whole-ecosystem"]
 featured: false
 ---

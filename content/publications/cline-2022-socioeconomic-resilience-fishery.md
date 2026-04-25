@@ -6,7 +6,7 @@ journal: "Science Advances"
 volume: 8
 pages: "eabn1396"
 year: 2022
-doi: ""
+doi: "10.1126/sciadv.abn1396"
 tags: ["socioeconomic resilience", "climate extremes", "freshwater fishery", "trout"]
 featured: true
 ---

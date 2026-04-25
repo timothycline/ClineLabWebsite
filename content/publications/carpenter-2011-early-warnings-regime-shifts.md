@@ -6,7 +6,7 @@ journal: "Science"
 volume: 332
 pages: "1079–1082"
 year: 2011
-doi: ""
+doi: "10.1126/science.1203672"
 tags: ["regime shifts", "early warnings", "whole-ecosystem experiment"]
 featured: false
 ---

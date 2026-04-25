@@ -6,7 +6,7 @@ journal: "Proceedings of the Royal Society B"
 volume: 290
 pages: "20222248"
 year: 2023
-doi: ""
+doi: "10.1098/rspb.2022.2248"
 tags: ["sockeye salmon", "body size", "ocean competition", "climate change"]
 featured: false
 ---

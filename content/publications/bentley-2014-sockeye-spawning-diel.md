@@ -6,7 +6,7 @@ journal: "Journal of Animal Ecology"
 volume: 83
 pages: "1478–1489"
 year: 2014
-doi: ""
+doi: "10.1111/1365-2656.12223"
 tags: ["sockeye salmon", "predator avoidance", "diel movement", "spawning"]
 featured: false
 ---

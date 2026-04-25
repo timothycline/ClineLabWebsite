@@ -6,7 +6,7 @@ journal: "Science"
 volume: 364
 pages: "783–786"
 year: 2019
-doi: ""
+doi: "10.1126/science.aav4313"
 tags: ["habitat mosaics", "fish production", "river basins", "isotopes"]
 featured: false
 ---

@@ -6,7 +6,7 @@ journal: "Nature Ecology and Evolution"
 volume: 6
 pages: "1700–1709"
 year: 2022
-doi: ""
+doi: "10.1038/s41559-022-01882-0"
 tags: ["coral reef", "fish community", "resilience", "ecosystem dynamics"]
 featured: true
 ---

@@ -6,7 +6,7 @@ journal: "Ecosphere"
 volume: 5
 pages: "68"
 year: 2014
-doi: ""
+doi: "10.1890/es14-00059.1"
 tags: ["sea lamprey", "climate change", "invasive species", "host-parasite"]
 featured: false
 ---

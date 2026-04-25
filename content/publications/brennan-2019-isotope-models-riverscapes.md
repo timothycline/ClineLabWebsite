@@ -6,7 +6,7 @@ journal: "Methods in Ecology and Evolution"
 volume: ""
 pages: ""
 year: 2019
-doi: ""
+doi: "10.1111/2041-210x.13191"
 tags: ["stable isotopes", "habitat use", "migratory fish", "riverscapes"]
 featured: false
 ---

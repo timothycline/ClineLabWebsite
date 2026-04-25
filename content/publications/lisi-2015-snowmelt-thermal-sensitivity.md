@@ -6,7 +6,7 @@ journal: "Geophysical Research Letters"
 volume: 42
 pages: "3380–3388"
 year: 2015
-doi: ""
+doi: "10.1002/2015gl064083"
 tags: ["snowmelt", "stream temperature", "watershed geomorphology", "thermal sensitivity"]
 featured: false
 ---

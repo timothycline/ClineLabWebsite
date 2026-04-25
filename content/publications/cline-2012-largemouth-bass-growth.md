@@ -6,7 +6,7 @@ journal: "Canadian Journal of Fisheries and Aquatic Sciences"
 volume: 69
 pages: "224–230"
 year: 2012
-doi: ""
+doi: "10.1139/f2011-150"
 tags: ["largemouth bass", "catch-and-release", "mark-recapture", "growth"]
 featured: false
 ---

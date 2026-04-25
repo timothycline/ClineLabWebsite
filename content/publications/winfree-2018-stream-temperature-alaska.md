@@ -6,7 +6,7 @@ journal: "Environmental Research Letters"
 volume: 13
 pages: "064034"
 year: 2018
-doi: ""
+doi: "10.1088/1748-9326/aac4c0"
 tags: ["stream temperature", "landcover", "geomorphology", "Alaska", "salmon"]
 featured: false
 ---

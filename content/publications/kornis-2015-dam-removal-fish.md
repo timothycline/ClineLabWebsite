@@ -6,7 +6,7 @@ journal: "Aquatic Sciences"
 volume: 17
 pages: "465–480"
 year: 2015
-doi: ""
+doi: "10.1007/s00027-014-0391-2"
 tags: ["dam removal", "fish community", "stream restoration"]
 featured: false
 ---

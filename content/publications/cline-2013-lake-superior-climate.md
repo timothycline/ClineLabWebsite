@@ -6,7 +6,7 @@ journal: "PLoS ONE"
 volume: 8
 pages: "e62279"
 year: 2013
-doi: ""
+doi: "10.1371/journal.pone.0062279"
 tags: ["climate change", "thermal habitat", "Lake Superior", "fishes"]
 featured: false
 ---

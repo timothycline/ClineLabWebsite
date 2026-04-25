@@ -6,7 +6,7 @@ journal: "Nature Communications"
 volume: 8
 pages: "14042"
 year: 2017
-doi: ""
+doi: "10.1038/ncomms14042"
 tags: ["portfolio diversification", "resilience", "Alaska", "fishing communities", "salmon"]
 featured: true
 ---

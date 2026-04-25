@@ -6,7 +6,7 @@ journal: "Inland Waters"
 volume: 2
 pages: "193–198"
 year: 2012
-doi: ""
+doi: "10.5268/iw-2.4.513"
 tags: ["Daphnia", "vertical migration", "lake ecology"]
 featured: false
 ---
