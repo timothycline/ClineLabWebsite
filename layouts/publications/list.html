@@ -7,40 +7,66 @@
   {{ with .Content }}<div class="mt-4 prose dark:prose-invert">{{ . }}</div>{{ end }}
 </header>
 
-{{/* Sort by year (newest first) using date field */}}
+{{/*
+  Publication images: add a square image to any paper by setting in front matter:
+    image: "img/publications/slug.jpg"
+  and placing the file in static/img/publications/
+  If no image is set, a placeholder showing the year is displayed instead.
+*/}}
+
 {{ range .Pages.ByDate.Reverse }}
-<article class="mb-6 pb-6 border-b border-neutral-200 dark:border-neutral-700 last:border-0">
-  <h3 class="font-semibold text-neutral-800 dark:text-neutral-100 text-lg leading-snug mb-1">
-    <a href="{{ .Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
-      {{ .Title }}
-    </a>
-  </h3>
-  {{ with .Params.authors }}
-  <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
-    {{ delimit . ", " }}
-  </p>
-  {{ end }}
-  <p class="text-sm text-neutral-500 dark:text-neutral-400 italic mb-2">
-    {{ with .Params.journal }}{{ . }}{{ end }}
-    {{ with .Params.volume }}, {{ . }}{{ end }}
-    {{ with .Params.issue }}({{ . }}){{ end }}
-    {{ with .Params.pages }}: {{ . }}{{ end }}
-    {{ with .Params.year }} ({{ . }}){{ end }}
-  </p>
-  <div class="flex flex-wrap gap-2">
-    {{ with .Params.doi }}
-    <a href="https://doi.org/{{ . }}" target="_blank" rel="noopener"
-       class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition">
-      DOI ↗
-    </a>
-    {{ end }}
-    {{ with .Params.pdf }}
-    <a href="{{ . }}" target="_blank" rel="noopener"
-       class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition">
-      PDF ↗
-    </a>
+<article class="flex gap-4 mb-6 pb-6 border-b border-neutral-200 dark:border-neutral-700 last:border-0">
+
+  {{/* ── Thumbnail ── */}}
+  <div class="shrink-0">
+    {{ if .Params.image }}
+    <img src="{{ .Params.image | absURL }}"
+         alt="{{ .Title }} cover image"
+         class="w-20 h-20 object-cover rounded-md border border-neutral-200 dark:border-neutral-700">
+    {{ else }}
+    <div class="w-20 h-20 rounded-md bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 flex items-center justify-center">
+      <span class="text-xs font-bold text-primary-600 dark:text-primary-400 text-center leading-tight px-1">
+        {{ with .Params.year }}{{ . }}{{ else }}{{ .Date.Format "2006" }}{{ end }}
+      </span>
+    </div>
     {{ end }}
   </div>
+
+  {{/* ── Citation ── */}}
+  <div class="flex-1 min-w-0">
+    <h3 class="font-semibold text-neutral-800 dark:text-neutral-100 text-base leading-snug mb-1">
+      <a href="{{ .Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
+        {{ .Title }}
+      </a>
+    </h3>
+    {{ with .Params.authors }}
+    <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
+      {{ delimit . ", " }}
+    </p>
+    {{ end }}
+    <p class="text-sm text-neutral-500 dark:text-neutral-400 italic mb-2">
+      {{ with .Params.journal }}{{ . }}{{ end }}
+      {{ with .Params.volume }}, {{ . }}{{ end }}
+      {{ with .Params.issue }}({{ . }}){{ end }}
+      {{ with .Params.pages }}: {{ . }}{{ end }}
+      {{ with .Params.year }} ({{ . }}){{ end }}
+    </p>
+    <div class="flex flex-wrap gap-2">
+      {{ with .Params.doi }}
+      <a href="https://doi.org/{{ . }}" target="_blank" rel="noopener"
+         class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition">
+        DOI ↗
+      </a>
+      {{ end }}
+      {{ with .Params.pdf }}
+      <a href="{{ . }}" target="_blank" rel="noopener"
+         class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition">
+        PDF ↗
+      </a>
+      {{ end }}
+    </div>
+  </div>
+
 </article>
 {{ end }}
 {{ end }}
