@@ -1,0 +1,47 @@
+{{/*
+  Page banner partial.
+  Looks for a banner image in this order:
+    1. assets/img/banners/{page-slug}.jpg  (page-specific override)
+    2. assets/img/banners/{section}.jpg    (section-wide banner)
+    3. assets/img/banners/default.jpg      (site-wide fallback)
+  Supports .jpg, .jpeg, .png, .webp — whichever comes first.
+  To add a banner: drop a file named after the section into assets/img/banners/
+    e.g. assets/img/banners/people.jpg
+         assets/img/banners/news.jpg
+         assets/img/banners/publications.jpg
+*/}}
+
+{{ $banner := false }}
+
+{{/* 1. Page-specific (slug-named) */}}
+{{ if and (not $banner) .File }}
+  {{ $slug := .File.ContentBaseName | urlize }}
+  {{ $banner = resources.GetMatch (printf "img/banners/%s.*" $slug) }}
+{{ end }}
+
+{{/* 2. Section-wide */}}
+{{ if not $banner }}
+  {{ $section := .Section | default "home" }}
+  {{ $banner = resources.GetMatch (printf "img/banners/%s.*" $section) }}
+{{ end }}
+
+{{/* 3. Site-wide fallback */}}
+{{ if not $banner }}
+  {{ $banner = resources.GetMatch "img/banners/default.*" }}
+{{ end }}
+
+{{ if $banner }}
+  {{/* Resize to banner dimensions: wide, moderate height, webp for speed */}}
+  {{ $img := $banner.Resize "1400x350 webp q85 Center" }}
+  <div class="w-full -mx-6 sm:-mx-14 md:-mx-24 lg:-mx-32 overflow-hidden"
+       style="max-width: calc(100% + 4rem);">
+    <img
+      src="{{ $img.RelPermalink }}"
+      alt="{{ .Title }} banner"
+      width="{{ $img.Width }}"
+      height="{{ $img.Height }}"
+      class="w-full object-cover"
+      style="height: 280px; object-position: center;"
+      loading="eager">
+  </div>
+{{ end }}

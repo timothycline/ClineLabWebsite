@@ -1,6 +1,71 @@
 {{/* Custom homepage layout for Cline Lab */}}
 
-{{/* ── Hero / Lab Intro ─────────────────────────────────────────────── */}}
+{{/* ── Photo Slideshow ──────────────────────────────────────────────────
+  Auto-discovers all images in assets/img/slideshow/
+  Drop any .jpg/.png/.webp file in there — it appears automatically.
+  Prefix filenames with 01-, 02-, etc. to control order.
+*/}}
+{{ $slides := resources.Match "img/slideshow/*" }}
+{{ if $slides }}
+{{ $processed := slice }}
+{{ range $slides }}
+  {{ $img := .Resize "1400x600 webp q85 Center" }}
+  {{ $processed = $processed | append $img }}
+{{ end }}
+
+<div class="-mx-6 sm:-mx-14 md:-mx-24 lg:-mx-32 mb-10 overflow-hidden"
+     x-data="{
+       current: 0,
+       total: {{ len $processed }},
+       autoplay: null,
+       start() { this.autoplay = setInterval(() => { this.current = (this.current + 1) % this.total }, 5000) },
+       pause() { clearInterval(this.autoplay) },
+       go(i) { this.current = i },
+       prev() { this.current = (this.current - 1 + this.total) % this.total },
+       next() { this.current = (this.current + 1) % this.total }
+     }"
+     x-init="start()"
+     @mouseenter="pause()"
+     @mouseleave="start()">
+
+  <div class="relative" style="height: 480px;">
+    {{ range $i, $img := $processed }}
+    <div x-show="current === {{ $i }}"
+         x-transition:enter="transition-opacity duration-700"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition-opacity duration-700"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         class="absolute inset-0">
+      <img src="{{ $img.RelPermalink }}"
+           width="{{ $img.Width }}"
+           height="{{ $img.Height }}"
+           alt="Lab photo {{ add $i 1 }}"
+           class="w-full h-full object-cover"
+           {{ if eq $i 0 }}loading="eager"{{ else }}loading="lazy"{{ end }}>
+    </div>
+    {{ end }}
+    <button @click="prev()"
+            class="absolute left-3 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/40 hover:bg-black/60 text-white w-10 h-10 flex items-center justify-center transition"
+            aria-label="Previous slide">&#8592;</button>
+    <button @click="next()"
+            class="absolute right-3 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/40 hover:bg-black/60 text-white w-10 h-10 flex items-center justify-center transition"
+            aria-label="Next slide">&#8594;</button>
+  </div>
+
+  <div class="flex justify-center gap-2 py-3 bg-neutral-100 dark:bg-neutral-900">
+    {{ range $i, $_ := $processed }}
+    <button @click="go({{ $i }})"
+            :class="current === {{ $i }} ? 'bg-primary-600 w-4' : 'bg-neutral-400 w-2'"
+            class="h-2 rounded-full transition-all duration-300"
+            aria-label="Go to slide {{ add $i 1 }}"></button>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
+
+{{/* ── Lab Intro ────────────────────────────────────────────────────── */}}
 <section class="mb-12">
   <div class="max-w-3xl">
     <h1 class="text-4xl font-bold mb-4 text-neutral-800 dark:text-neutral-100">
@@ -111,6 +176,6 @@
     <strong>Interested in joining the lab?</strong>
     We welcome inquiries from prospective graduate students and postdocs.
     See the <a href="/people/" class="text-primary-600 dark:text-primary-400 hover:underline">People page</a>
-    for current openings, or <a href="mailto:timothy.cline@montana.edu" class="text-primary-600 dark:text-primary-400 hover:underline">email Tim directly</a>.
+    for current openings, or <a href="mailto:timothy.cline2@montana.edu" class="text-primary-600 dark:text-primary-400 hover:underline">email Tim directly</a>.
   </p>
 </section>
