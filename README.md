@@ -34,7 +34,7 @@ role: "PhD Student"        # PI | Postdoc | PhD Student | MS Student | Undergrad
 status: "current"          # current | alumni
 year_started: 2025
 # year_ended: 2027         # uncomment when they leave
-photo: "img/people/firstname-lastname.jpg"   # place photo in assets/img/people/
+photo: "img/people/firstname-lastname.jpg"   # place photo in static/img/people/
 email: "first.last@montana.edu"
 links:
   scholar: "https://scholar.google.com/..."
@@ -163,10 +163,10 @@ If you have a custom domain (e.g., `clinelab.montana.edu`):
 
 ## Adding photos
 
-Place photos in `assets/img/people/` and reference them as `img/people/firstname-lastname.jpg` in front matter.
+Place photos in `static/img/people/` and reference them as `img/people/firstname-lastname.jpg` in front matter.
 Hugo will resize and optimize them automatically.
 
-For project images: `assets/img/projects/short-name.png`.
+For project images: `static/img/projects/short-name.png`.
 
 ---
 
