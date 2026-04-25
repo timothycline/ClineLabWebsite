@@ -1,3 +1,6 @@
+# Raw photo archive — kept locally, not tracked in git
+assets/img/photoarchive/
+
 # Hugo build output
 /public/
 /resources/_gen/
