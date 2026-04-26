@@ -3,4 +3,4 @@ title: "Research"
 description: "Research themes in the Cline Lab."
 ---
 
-The Cline Lab studies the ecology and management of cold-water fishes — primarily salmonids — in western North America. We combine long-term field datasets, physiological experiments, and quantitative modeling to understand how environmental change shapes fish populations and to translate that understanding into actionable management guidance.
+The overarching goal of our research program is to develop a mechanistic understanding of what makes fish populations and fisheries productive and resilient — and to apply that knowledge toward science-based strategies for management and conservation. Our work integrates ecological theory with the practical needs of fisheries and aquatic ecosystem management, underpinned by strong collaborations with state, federal, and tribal partners across the northern Rocky Mountains and Pacific Northwest.

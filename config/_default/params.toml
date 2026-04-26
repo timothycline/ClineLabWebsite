@@ -47,7 +47,7 @@ enableCodeCopy = true
   name = "Timothy Cline"
   image = "img/pi-headshot.jpg"
   headline = "Assistant Professor, Dept. of Ecology, Montana State University"
-  bio = "Cold-water fish ecologist studying population dynamics, climate adaptation, and fisheries management."
+  bio = "Cold-water fish ecologist studying streamflow, life-history diversity, and the conservation of threatened freshwater species across the northern Rocky Mountains."
   links = [
     { scholar = "https://scholar.google.com/citations?user=PLACEHOLDER" },
     { github  = "https://github.com/PLACEHOLDER" },
