@@ -37,7 +37,7 @@
     <h2 class="text-2xl font-semibold mb-6 text-neutral-800 dark:text-neutral-100 border-b border-neutral-200 dark:border-neutral-700 pb-2">
       {{ $label }}
     </h2>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem;">
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; max-width:624px; margin:0 auto;">
       {{ range $members }}
       <div style="flex:0 0 300px; width:300px;">{{ partial "people/person-card.html" . }}</div>
       {{ end }}
@@ -52,7 +52,7 @@
   <h2 class="text-2xl font-semibold mb-6 text-neutral-800 dark:text-neutral-100 border-b border-neutral-200 dark:border-neutral-700 pb-2">
     Alumni
   </h2>
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem;">
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; max-width:624px; margin:0 auto;">
     {{ range $alumni }}
     <div style="flex:0 0 300px; width:300px;">{{ partial "people/person-card.html" . }}</div>
     {{ end }}
