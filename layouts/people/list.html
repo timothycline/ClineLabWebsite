@@ -33,13 +33,20 @@
   {{ end }}
 
   {{ if $members }}
+  {{ $count := len $members }}
+  {{ $oddCount := eq (mod $count 2) 1 }}
   <section class="mb-12">
     <h2 class="text-2xl font-semibold mb-6 text-neutral-800 dark:text-neutral-100 border-b border-neutral-200 dark:border-neutral-700 pb-2">
       {{ $label }}
     </h2>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; max-width:624px; margin:0 auto;">
-      {{ range $members }}
-      <div style="flex:0 0 300px; width:300px;">{{ partial "people/person-card.html" . }}</div>
+    {{/* Grid: strict 2 columns of 300px, centered. Last item spans both
+         columns and self-centers when total count is odd. */}}
+    <div style="display:grid; grid-template-columns:repeat(2,300px); justify-content:center; gap:1.5rem;">
+      {{ range $i, $member := $members }}
+      {{ $isLast := eq (add $i 1) $count }}
+      <div style="{{ if and $isLast $oddCount }}grid-column:1/3; justify-self:center;{{ end }}width:300px;">
+        {{ partial "people/person-card.html" $member }}
+      </div>
       {{ end }}
     </div>
   </section>
@@ -48,13 +55,18 @@
 
 {{/* ── Alumni ───────────────────────────────────────────────────────── */}}
 {{ if $alumni }}
+{{ $count := len $alumni }}
+{{ $oddCount := eq (mod $count 2) 1 }}
 <section>
   <h2 class="text-2xl font-semibold mb-6 text-neutral-800 dark:text-neutral-100 border-b border-neutral-200 dark:border-neutral-700 pb-2">
     Alumni
   </h2>
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; max-width:624px; margin:0 auto;">
-    {{ range $alumni }}
-    <div style="flex:0 0 300px; width:300px;">{{ partial "people/person-card.html" . }}</div>
+  <div style="display:grid; grid-template-columns:repeat(2,300px); justify-content:center; gap:1.5rem;">
+    {{ range $i, $member := $alumni }}
+    {{ $isLast := eq (add $i 1) $count }}
+    <div style="{{ if and $isLast $oddCount }}grid-column:1/3; justify-self:center;{{ end }}width:300px;">
+      {{ partial "people/person-card.html" $member }}
+    </div>
     {{ end }}
   </div>
 </section>
