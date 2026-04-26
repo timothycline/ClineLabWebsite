@@ -3,8 +3,9 @@
 # Full reference: https://blowfish.page/docs/configuration/
 # ---------------------------------------------------------------------------
 
-colorScheme = "ocean"
-# Other options: avocado, fire, forest, princess, slate, terminal, tide, tokyonight
+colorScheme = "lab"
+# Custom indigo scheme defined in assets/css/schemes/lab.css
+# Other built-in options: avocado, fire, forest, princess, slate, terminal, tide, tokyonight
 # Preview all at: https://blowfish.page/docs/getting-started/#colour-schemes
 
 defaultAppearance = "light"   # "light" | "dark"

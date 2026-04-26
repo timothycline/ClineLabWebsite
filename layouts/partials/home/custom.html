@@ -1,38 +1,58 @@
 {{/* Custom homepage layout for Cline Lab */}}
 
-{{/* ── Lab Intro ────────────────────────────────────────────────────── */}}
-<section class="mb-12">
-  <div class="max-w-3xl">
-    <h1 class="text-4xl font-bold mb-4 text-neutral-800 dark:text-neutral-100">
-      Fisheries Ecology and Conservation at MSU
-    </h1>
-    <p class="text-xl text-neutral-600 dark:text-neutral-400 mb-2 font-medium">
-      Cline Lab &mdash; Department of Ecology, Montana State University
-    </p>
-    <p class="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6">
-      We develop a mechanistic understanding of what makes fish populations and fisheries productive
-      and resilient &mdash; and apply that knowledge toward science-based conservation strategies.
-      Our work centers on how streamflow variability and drought shape fish production, how
-      life-history diversity buffers populations against environmental change, and how threatened
-      species like bull trout can recover in a rapidly changing world. We work closely with state,
-      federal, and tribal partners to ensure our science informs real management decisions.
-    </p>
-    <div class="flex flex-wrap gap-3">
-      <a href="/research/"
-         class="rounded-md bg-primary-600 px-5 py-2 text-sm font-semibold text-white shadow hover:bg-primary-500 transition">
-        Our Research
+{{/* ── Hero — full-bleed gradient ────────────────────────────────────────
+  Negative margins cancel the body's horizontal padding so the gradient
+  spans edge-to-edge, then the same padding is re-applied for content.
+*/}}
+<section class="cline-hero -mx-6 sm:-mx-14 md:-mx-24 lg:-mx-32 px-6 sm:px-14 md:px-24 lg:px-32 py-24 mb-16 text-center">
+
+  {{/* Hiring badge */}}
+  <div>
+    <span class="cline-badge">
+      <span class="text-neutral-600 dark:text-neutral-400">
+        We are recruiting graduate students &amp; postdocs!
+      </span>
+      <a href="/people/" class="font-semibold text-primary-600 dark:text-primary-400 hover:underline whitespace-nowrap">
+        Apply now &rarr;
       </a>
-      <a href="/people/"
-         class="rounded-md border border-neutral-300 dark:border-neutral-600 px-5 py-2 text-sm font-semibold text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition">
-        Meet the Team
-      </a>
-    </div>
+    </span>
+  </div>
+
+  {{/* Main title */}}
+  <h1 class="text-5xl sm:text-6xl font-black leading-tight tracking-tight text-neutral-900 dark:text-neutral-50 mb-6 max-w-3xl mx-auto">
+    Fisheries Ecology<br class="hidden sm:block">
+    &amp; Conservation
+  </h1>
+
+  {{/* Sub-tagline */}}
+  <p class="text-xl text-neutral-600 dark:text-neutral-400 font-medium mb-3">
+    Cline Lab &mdash; Department of Ecology, Montana State University
+  </p>
+
+  {{/* Description */}}
+  <p class="text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed mb-10 max-w-2xl mx-auto">
+    We study the ecology and management of cold-water fishes &mdash; particularly salmonids &mdash;
+    in the face of climate change, habitat fragmentation, and shifting land use. Long-term field
+    studies, physiological experiments, and quantitative modelling &mdash; all in service of
+    conservation and sustainable fisheries.
+  </p>
+
+  {{/* CTA buttons */}}
+  <div class="flex flex-wrap gap-4 justify-center">
+    <a href="/research/"
+       class="rounded-lg bg-primary-600 px-7 py-3 text-base font-semibold text-white shadow-md hover:bg-primary-500 transition">
+      Our Research
+    </a>
+    <a href="/publications/"
+       class="rounded-lg px-7 py-3 text-base font-semibold text-neutral-700 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400 transition">
+      View Publications &rarr;
+    </a>
   </div>
 </section>
 
+
 {{/* ── Photo Slideshow ──────────────────────────────────────────────────
   Auto-discovers all images in assets/img/slideshow/
-  Drop any .jpg/.png/.webp file in there — it appears automatically.
   Prefix filenames with 01-, 02-, etc. to control order.
 */}}
 {{ $slides := resources.Match "img/slideshow/*" }}
@@ -46,9 +66,8 @@
 {{ end }}
 
 {{ if $processed }}
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-4 text-neutral-800 dark:text-neutral-100">Lab Photos</h2>
-  <div class="relative rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-700 shadow-sm"
+<section class="mb-16">
+  <div class="relative rounded-2xl overflow-hidden shadow-md border border-neutral-200 dark:border-neutral-700"
        x-data="{
          current: 0,
          total: {{ len $processed }},
@@ -63,8 +82,6 @@
        @mouseenter="pause()"
        @mouseleave="start()">
 
-    {{/* Grid-stacking: all images occupy the same cell; only the visible one
-         drives the container height, giving each photo its native aspect ratio */}}
     <div style="display:grid; grid-template-columns:1fr;">
       {{ range $i, $img := $processed }}
       <img src="{{ $img.RelPermalink }}"
@@ -90,10 +107,10 @@
             class="absolute right-3 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/40 hover:bg-black/60 text-white w-10 h-10 flex items-center justify-center transition"
             aria-label="Next slide">&#8594;</button>
 
-    <div class="flex justify-center gap-2 py-3 bg-neutral-100 dark:bg-neutral-900">
+    <div class="flex justify-center gap-2 py-3 bg-white/80 dark:bg-neutral-900/80">
       {{ range $i, $_ := $processed }}
       <button @click="go({{ $i }})"
-              :class="current === {{ $i }} ? 'bg-primary-600 w-4' : 'bg-neutral-400 w-2'"
+              :class="current === {{ $i }} ? 'bg-primary-600 w-4' : 'bg-neutral-300 dark:bg-neutral-600 w-2'"
               class="h-2 rounded-full transition-all duration-300"
               aria-label="Go to slide {{ add $i 1 }}"></button>
       {{ end }}
@@ -103,30 +120,114 @@
 {{ end }}
 {{ end }}
 
+
+{{/* ── Research Themes ──────────────────────────────────────────────────
+  Cards with a coloured gradient image area, four ecology-themed presets.
+*/}}
+{{ $themes := where site.RegularPages "Section" "research" }}
+{{ if $themes }}
+<section class="mb-16">
+
+  <div class="text-center mb-10">
+    <span class="cline-section-label">Science</span>
+    <h2 class="text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-3">Research Themes</h2>
+    <p class="text-neutral-500 dark:text-neutral-400 max-w-xl mx-auto text-base">
+      Long-term field work, lab physiology, and quantitative modelling &mdash; connected by a focus on fish that matter.
+    </p>
+  </div>
+
+  <div class="grid gap-6 sm:grid-cols-2">
+    {{ range $i, $theme := ($themes.ByParam "weight") }}
+    {{ $gradIdx := mod $i 4 }}
+    <article class="cline-card group">
+
+      {{/* Gradient image area */}}
+      <div class="cline-theme-img cline-grad-{{ $gradIdx }}">
+        <svg class="cline-theme-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {{ if eq $gradIdx 0 }}
+          <path d="M8 32c8-14 32-20 48-12-6 4-10 8-10 12s4 8 10 12C40 52 16 46 8 32z" stroke="white" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="42" cy="28" r="2.5" fill="white"/>
+          {{ else if eq $gradIdx 1 }}
+          <path d="M32 8C20 8 10 20 10 32c0 6 4 12 10 16 2-8 6-14 12-18 6 4 10 10 12 18 6-4 10-10 10-16C54 20 44 8 32 8z" stroke="white" stroke-width="2.5" stroke-linejoin="round"/>
+          <line x1="32" y1="48" x2="32" y2="56" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          {{ else if eq $gradIdx 2 }}
+          <path d="M8 28c4-6 8-6 12 0s8 6 12 0 8-6 12 0 8 6 12 0" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 36c4-6 8-6 12 0s8 6 12 0 8-6 12 0 8 6 12 0" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 44c4-6 8-6 12 0s8 6 12 0 8-6 12 0 8 6 12 0" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          {{ else }}
+          <path d="M12 52L28 24l8 14 6-8 10 22H12z" stroke="white" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="46" cy="18" r="6" stroke="white" stroke-width="2.5"/>
+          {{ end }}
+        </svg>
+      </div>
+
+      {{/* Card body */}}
+      <div class="p-6">
+        <h3 class="font-bold text-neutral-800 dark:text-neutral-100 text-lg leading-snug mb-2">
+          <a href="{{ $theme.Permalink }}"
+             class="hover:text-primary-600 dark:hover:text-primary-400 transition">
+            {{ $theme.Title }}
+          </a>
+        </h3>
+
+        {{ with $theme.Params.description }}
+        <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mb-4">{{ . }}</p>
+        {{ end }}
+
+        {{ $projects := where site.RegularPages "Section" "projects" }}
+        {{ $themeSlug := $theme.File.ContentBaseName }}
+        {{ $themeProjects := where $projects ".Params.theme" $themeSlug }}
+        {{ if $themeProjects }}
+        <p class="text-xs text-primary-600 dark:text-primary-400 font-medium mb-4">
+          {{ len $themeProjects }} active project{{ if gt (len $themeProjects) 1 }}s{{ end }}
+        </p>
+        {{ end }}
+
+        <a href="{{ $theme.Permalink }}"
+           class="inline-flex items-center gap-1 text-sm font-semibold text-primary-600 dark:text-primary-400 hover:text-primary-500 transition">
+          Explore &rarr;
+        </a>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+
+  <div class="text-center mt-8">
+    <a href="/research/"
+       class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-6 py-2.5 text-sm font-semibold text-white shadow hover:bg-primary-500 transition">
+      All Research Themes &rarr;
+    </a>
+  </div>
+</section>
+{{ end }}
+
+
 {{/* ── Recent News ──────────────────────────────────────────────────── */}}
 {{ $news := where site.RegularPages "Section" "news" }}
 {{ $recent := first 3 $news }}
 {{ if $recent }}
-<section class="mb-12">
-  <div class="flex items-center justify-between mb-6">
-    <h2 class="text-2xl font-bold text-neutral-800 dark:text-neutral-100">Recent News</h2>
-    <a href="/news/" class="text-sm text-primary-600 dark:text-primary-400 hover:underline">
+<section class="mb-16">
+  <div class="flex items-center justify-between mb-8">
+    <div>
+      <span class="cline-section-label">Updates</span>
+      <h2 class="text-3xl font-bold text-neutral-800 dark:text-neutral-100">Recent News</h2>
+    </div>
+    <a href="/news/" class="text-sm font-semibold text-primary-600 dark:text-primary-400 hover:underline whitespace-nowrap">
       All news &rarr;
     </a>
   </div>
-  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
     {{ range $recent }}
-    <article class="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-5 shadow-sm hover:shadow-md transition">
-      <time class="text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
-        {{ .Date.Format "January 2, 2006" }}
-      </time>
-      <h3 class="mt-2 font-semibold text-neutral-800 dark:text-neutral-100 leading-snug">
+    <article class="cline-card p-6">
+      <span class="cline-date-chip">{{ .Date.Format "Jan 2, 2006" }}</span>
+      <h3 class="mt-3 font-semibold text-neutral-800 dark:text-neutral-100 leading-snug text-base">
         <a href="{{ .Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
           {{ .Title }}
         </a>
       </h3>
       {{ if .Summary }}
-      <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400 line-clamp-3">
+      <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400 line-clamp-3">
         {{ .Summary | plainify }}
       </p>
       {{ end }}
@@ -136,39 +237,24 @@
 </section>
 {{ end }}
 
-{{/* ── Research Themes ──────────────────────────────────────────────── */}}
-{{ $themes := where site.RegularPages "Section" "research" }}
-{{ if $themes }}
-<section class="mb-12">
-  <div class="flex items-center justify-between mb-6">
-    <h2 class="text-2xl font-bold text-neutral-800 dark:text-neutral-100">Research Themes</h2>
-    <a href="/research/" class="text-sm text-primary-600 dark:text-primary-400 hover:underline">
-      All research &rarr;
+
+{{/* ── Recruiting strip ─────────────────────────────────────────────── */}}
+<section class="cline-recruit p-8 text-center mb-4">
+  <h3 class="text-xl font-bold text-neutral-800 dark:text-neutral-100 mb-2">
+    Interested in joining the lab?
+  </h3>
+  <p class="text-neutral-600 dark:text-neutral-400 text-sm max-w-xl mx-auto mb-5">
+    We welcome inquiries from prospective graduate students and postdoctoral researchers with
+    interests in cold-water fish ecology, conservation, or fisheries management.
+  </p>
+  <div class="flex flex-wrap gap-3 justify-center">
+    <a href="/people/"
+       class="rounded-lg bg-primary-600 px-5 py-2 text-sm font-semibold text-white hover:bg-primary-500 transition shadow">
+      Current Openings
+    </a>
+    <a href="mailto:timothy.cline2@montana.edu"
+       class="rounded-lg border border-primary-300 dark:border-primary-700 px-5 py-2 text-sm font-semibold text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition">
+      Email Tim
     </a>
   </div>
-  <div class="grid gap-4 sm:grid-cols-2">
-    {{ range ($themes.ByParam "weight") }}
-    <article class="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-5 shadow-sm hover:shadow-md transition">
-      <h3 class="font-bold text-neutral-800 dark:text-neutral-100 text-base leading-snug mb-2">
-        <a href="{{ .Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
-          {{ .Title }}
-        </a>
-      </h3>
-      {{ with .Params.description }}
-      <p class="text-sm text-neutral-600 dark:text-neutral-400">{{ . }}</p>
-      {{ end }}
-    </article>
-    {{ end }}
-  </div>
-</section>
-{{ end }}
-
-{{/* ── Quick Links Footer ───────────────────────────────────────────── */}}
-<section class="rounded-xl bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700 p-6">
-  <p class="text-neutral-700 dark:text-neutral-300 text-sm">
-    <strong>Interested in joining the lab?</strong>
-    We welcome inquiries from prospective graduate students and postdocs.
-    See the <a href="/people/" class="text-primary-600 dark:text-primary-400 hover:underline">People page</a>
-    for current openings, or <a href="mailto:timothy.cline2@montana.edu" class="text-primary-600 dark:text-primary-400 hover:underline">email Tim directly</a>.
-  </p>
 </section>
