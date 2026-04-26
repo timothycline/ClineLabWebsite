@@ -1,50 +1,51 @@
 {{/* Reusable person card partial */}}
-<article class="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-5 shadow-sm hover:shadow-md transition">
-  {{/* Photo */}}
+<article class="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition overflow-hidden">
+  {{/* Photo — fills full card width */}}
   {{ with .Params.photo }}
   <img src="{{ . | absURL }}" alt="Photo of {{ $.Title }}"
-       class="w-40 h-40 rounded-full object-cover mb-4 mx-auto">
+       class="w-full aspect-square object-cover object-top">
   {{ else }}
-  {{/* Placeholder avatar if no photo provided */}}
-  <div class="w-24 h-24 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center mb-4 mx-auto sm:mx-0">
-    <span class="text-3xl text-neutral-400">{{ substr .Title 0 1 }}</span>
+  <div class="w-full aspect-square bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center">
+    <span class="text-6xl text-neutral-400">{{ substr .Title 0 1 }}</span>
   </div>
   {{ end }}
 
-  <h3 class="font-bold text-neutral-800 dark:text-neutral-100 text-lg">
-    <a href="{{ .Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
-      {{ .Title }}
-    </a>
-  </h3>
-  <p class="text-sm text-primary-600 dark:text-primary-400 font-medium mb-1">{{ .Params.role }}</p>
+  <div class="p-4">
+    <h3 class="font-bold text-neutral-800 dark:text-neutral-100 text-lg leading-snug">
+      <a href="{{ .Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
+        {{ .Title }}
+      </a>
+    </h3>
+    <p class="text-sm text-primary-600 dark:text-primary-400 font-medium mb-1">{{ .Params.role }}</p>
 
-  {{/* Alumni: show year range and current position */}}
-  {{ if eq .Params.status "alumni" }}
-  <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-1">
-    {{ .Params.year_started }}{{ with .Params.year_ended }}–{{ . }}{{ end }}
-  </p>
-  {{ with .Params.current_position }}
-  <p class="text-xs text-neutral-600 dark:text-neutral-400 italic mb-2">Now: {{ . }}</p>
-  {{ end }}
-  {{ end }}
+    {{/* Alumni: show year range and current position */}}
+    {{ if eq .Params.status "alumni" }}
+    <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-1">
+      {{ .Params.year_started }}{{ with .Params.year_ended }}–{{ . }}{{ end }}
+    </p>
+    {{ with .Params.current_position }}
+    <p class="text-xs text-neutral-600 dark:text-neutral-400 italic mb-2">Now: {{ . }}</p>
+    {{ end }}
+    {{ end }}
 
-  {{/* Links */}}
-  <div class="flex flex-wrap gap-2 mt-3">
-    {{ with .Params.email }}
-    <a href="mailto:{{ . }}" class="text-xs text-neutral-500 hover:text-primary-600 dark:hover:text-primary-400 transition"
-       title="Email">Email</a>
-    {{ end }}
-    {{ with .Params.links.scholar }}
-    <a href="{{ . }}" class="text-xs text-neutral-500 hover:text-primary-600 dark:hover:text-primary-400 transition"
-       target="_blank" rel="noopener" title="Google Scholar">Scholar</a>
-    {{ end }}
-    {{ with .Params.links.github }}
-    <a href="{{ . }}" class="text-xs text-neutral-500 hover:text-primary-600 dark:hover:text-primary-400 transition"
-       target="_blank" rel="noopener" title="GitHub">GitHub</a>
-    {{ end }}
-    {{ with .Params.links.website }}
-    <a href="{{ . }}" class="text-xs text-neutral-500 hover:text-primary-600 dark:hover:text-primary-400 transition"
-       target="_blank" rel="noopener" title="Personal site">Website</a>
-    {{ end }}
+    {{/* Links */}}
+    <div class="flex flex-wrap gap-2 mt-3">
+      {{ with .Params.email }}
+      <a href="mailto:{{ . }}" class="text-xs text-neutral-500 hover:text-primary-600 dark:hover:text-primary-400 transition"
+         title="Email">Email</a>
+      {{ end }}
+      {{ with .Params.links.scholar }}
+      <a href="{{ . }}" class="text-xs text-neutral-500 hover:text-primary-600 dark:hover:text-primary-400 transition"
+         target="_blank" rel="noopener" title="Google Scholar">Scholar</a>
+      {{ end }}
+      {{ with .Params.links.github }}
+      <a href="{{ . }}" class="text-xs text-neutral-500 hover:text-primary-600 dark:hover:text-primary-400 transition"
+         target="_blank" rel="noopener" title="GitHub">GitHub</a>
+      {{ end }}
+      {{ with .Params.links.website }}
+      <a href="{{ . }}" class="text-xs text-neutral-500 hover:text-primary-600 dark:hover:text-primary-400 transition"
+         target="_blank" rel="noopener" title="Personal site">Website</a>
+      {{ end }}
+    </div>
   </div>
 </article>
