@@ -9,7 +9,7 @@ email: "maddie.wilson@montana.edu"
 links:
   github: ""
   scholar: ""
-topic: "TBD"
+topic: "Juvenile brown trout mortality and movement in the Upper Clark Fork River"
 weight: 60
 ---
 
