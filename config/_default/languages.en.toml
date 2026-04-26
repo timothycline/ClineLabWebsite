@@ -4,6 +4,6 @@ weight = 1
 [params]
   # Site-level metadata shown in browser tab and SEO
   title = "Cline Lab"
-  description = "Fisheries Ecology at Montana State University. We study cold-water fish ecology and management to inform conservation and sustainable fisheries."
+  description = "Fisheries Ecology and Conservation at Montana State University. We study cold-water fish ecology and management to inform conservation and sustainable fisheries."
   # Displayed in the site header/footer
   mainSections = ["news", "projects"]

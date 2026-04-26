@@ -3,7 +3,7 @@ baseURL = "https://timothycline.github.io/ClineLabWebsite/"
 
 languageCode = "en"
 defaultContentLanguage = "en"
-title = "Fisheries Ecology at MSU — Cline Lab"
+title = "Fisheries Ecology and Conservation at MSU — Cline Lab"
 
 enableRobotsTXT = true
 paginate = 10
