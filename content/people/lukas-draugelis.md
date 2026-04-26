@@ -8,6 +8,7 @@ photo: "img/people/lukas-draugelis.jpg"
 email: "lukas.draugelis@gmail.com"
 links:
   github: ""
+topic: "Life-history diversity at the rainbow trout invasion front, Flathead River"
 weight: 10
 ---
 

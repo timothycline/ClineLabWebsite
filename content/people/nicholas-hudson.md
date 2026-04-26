@@ -9,6 +9,7 @@ email: "nicholas.hudson@montana.edu"
 links:
   github: ""
   scholar: ""
+topic: "Wild trout recruitment and life-history variation, southwest Montana rivers"
 weight: 30
 ---
 

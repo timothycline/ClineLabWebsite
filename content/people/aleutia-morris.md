@@ -12,6 +12,7 @@ links:
   github: ""
   website: ""
 current_position: "MS Student, Western Washington University"
+topic: "Field and laboratory support, fisheries ecology"
 weight: 10
 ---
 

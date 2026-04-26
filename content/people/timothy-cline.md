@@ -10,6 +10,7 @@ links:
   Google Scholar: "https://scholar.google.com/citations?user=HQlTKrIAAAAJ&hl=en"
   github: "https://github.com/timothycline"
   website: "https://www.montana.edu/ecology/directory/faculty/2363959/timothy-cline"
+topic: "Fish population ecology, streamflow & fish production, threatened species conservation"
 weight: 1                  # controls sort order on the page (PI = 1)
 ---
 

@@ -17,6 +17,9 @@
       </a>
     </h3>
     <p class="text-sm text-primary-600 dark:text-primary-400 font-medium mb-1">{{ .Params.role }}</p>
+    {{ with .Params.topic }}
+    <p class="text-xs text-neutral-600 dark:text-neutral-400 italic mb-1 leading-snug">{{ . }}</p>
+    {{ end }}
 
     {{/* Alumni: show year range and current position */}}
     {{ if eq .Params.status "alumni" }}

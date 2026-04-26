@@ -9,6 +9,7 @@ email: "benny.bevil@montana.edu"
 links:
   github: ""
   scholar: ""
+topic: "Stream metabolism, primary production, and fish production across river networks"
 weight: 50
 ---
 

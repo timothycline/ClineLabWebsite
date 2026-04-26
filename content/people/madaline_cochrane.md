@@ -10,6 +10,7 @@ email: ""
 links:
   Google Scholar: "https://scholar.google.com/citations?user=HV6sYuMAAAAJ&hl=en"
 current_position: "Postdoctoral Researcher, University of Montana"
+topic: "Bull trout population dynamics and life-history diversity, Kootenai drainage"
 weight: 20
 ---
 
