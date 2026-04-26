@@ -1,0 +1,49 @@
+{{/* Small project card used on research list and theme single pages */}}
+<article class="rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-4 shadow-sm hover:shadow-md transition">
+  <div class="flex items-start justify-between gap-2 mb-2">
+    <h4 class="font-semibold text-neutral-800 dark:text-neutral-100 text-sm leading-snug">
+      <a href="{{ .Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
+        {{ .Title }}
+      </a>
+    </h4>
+    {{ with .Params.status }}
+    <span class="shrink-0 text-xs rounded-full px-2 py-0.5 font-medium
+      {{ if eq . "active" }}bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300
+      {{ else }}bg-neutral-100 text-neutral-500 dark:bg-neutral-700 dark:text-neutral-400{{ end }}">
+      {{ . }}
+    </span>
+    {{ end }}
+  </div>
+  {{ with .Params.description }}
+  <p class="text-xs text-neutral-600 dark:text-neutral-400 mb-3 leading-relaxed">{{ . }}</p>
+  {{ end }}
+  {{ with .Params.funding }}
+  <p class="text-xs text-neutral-400 dark:text-neutral-500 mb-2">Funding: {{ . }}</p>
+  {{ end }}
+  <div class="flex flex-wrap gap-2">
+    {{ with .Params.links.github }}
+    <a href="{{ . }}" target="_blank" rel="noopener"
+       class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-0.5 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition">
+      GitHub
+    </a>
+    {{ end }}
+    {{ with .Params.links.demo }}
+    <a href="{{ . }}" target="_blank" rel="noopener"
+       class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-0.5 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition">
+      Demo
+    </a>
+    {{ end }}
+    {{ with .Params.links.paper }}
+    <a href="{{ . }}"
+       class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-0.5 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition">
+      Paper
+    </a>
+    {{ end }}
+    {{ with .Params.links.data }}
+    <a href="{{ . }}" target="_blank" rel="noopener"
+       class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-0.5 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition">
+      Data
+    </a>
+    {{ end }}
+  </div>
+</article>

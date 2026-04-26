@@ -1,0 +1,30 @@
+{{ define "main" }}
+<header class="mb-8">
+  <p class="text-sm text-primary-600 dark:text-primary-400 font-medium mb-1">
+    <a href="{{ .Parent.Permalink }}" class="hover:underline">Research</a>
+  </p>
+  <h1 class="text-3xl font-bold text-neutral-800 dark:text-neutral-100">{{ .Title }}</h1>
+</header>
+
+<div class="prose dark:prose-invert max-w-3xl mb-12">
+  {{ .Content }}
+</div>
+
+{{/* Projects associated with this theme */}}
+{{ $themeSlug := .File.ContentBaseName }}
+{{ $themeProjects := where (where site.RegularPages "Section" "projects") ".Params.theme" $themeSlug }}
+
+{{ if $themeProjects }}
+<section>
+  <h2 class="text-xl font-bold text-neutral-800 dark:text-neutral-100 mb-4 border-t border-neutral-200 dark:border-neutral-700 pt-8">
+    Projects &amp; Data
+  </h2>
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {{ range $themeProjects }}
+      {{ partial "research/project-card.html" . }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

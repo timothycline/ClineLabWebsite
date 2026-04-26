@@ -9,6 +9,8 @@ links:
   paper: "/publications/smith-2023-bull-trout-genomics/"
 tags: ["data", "bull trout", "genomics", "landscape genetics"]
 featured: false
+theme: "landscape-connectivity"
+status: "active"
 ---
 
 Raw SNP data, filtered VCF files, and landscape resistance rasters associated with Smith et al. (2023). All scripts for the analysis pipeline are included and documented.

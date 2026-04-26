@@ -1,0 +1,74 @@
+{{ define "main" }}
+
+{{/* Breadcrumb back to parent theme */}}
+{{ with .Params.theme }}
+{{ $themePages := where site.RegularPages "Section" "research" }}
+{{ $parentTheme := false }}
+{{ range $themePages }}
+  {{ if eq .File.ContentBaseName $.Params.theme }}
+    {{ $parentTheme = . }}
+  {{ end }}
+{{ end }}
+{{ if $parentTheme }}
+<p class="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
+  <a href="{{ site.GetPage "research" }}.Permalink" class="hover:underline">Research</a>
+  &rsaquo;
+  <a href="{{ $parentTheme.Permalink }}" class="text-primary-600 dark:text-primary-400 hover:underline">
+    {{ $parentTheme.Title }}
+  </a>
+</p>
+{{ end }}
+{{ end }}
+
+<header class="mb-6">
+  <div class="flex items-center gap-3 flex-wrap mb-2">
+    <h1 class="text-3xl font-bold text-neutral-800 dark:text-neutral-100">{{ .Title }}</h1>
+    {{ with .Params.status }}
+    <span class="text-sm rounded-full px-3 py-1 font-medium
+      {{ if eq . "active" }}bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300
+      {{ else }}bg-neutral-100 text-neutral-600 dark:bg-neutral-700 dark:text-neutral-400{{ end }}">
+      {{ . }}
+    </span>
+    {{ end }}
+  </div>
+  {{ with .Params.funding }}
+  <p class="text-sm text-neutral-500 dark:text-neutral-400">Funding: {{ . }}</p>
+  {{ end }}
+</header>
+
+<div class="prose dark:prose-invert max-w-3xl mb-8">
+  {{ .Content }}
+</div>
+
+{{/* Link buttons */}}
+{{ $hasLinks := or .Params.links.github .Params.links.demo .Params.links.paper .Params.links.data }}
+{{ if $hasLinks }}
+<div class="flex flex-wrap gap-3">
+  {{ with .Params.links.github }}
+  <a href="{{ . }}" target="_blank" rel="noopener"
+     class="rounded-md border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition">
+    GitHub
+  </a>
+  {{ end }}
+  {{ with .Params.links.demo }}
+  <a href="{{ . }}" target="_blank" rel="noopener"
+     class="rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-500 transition">
+    Live Demo
+  </a>
+  {{ end }}
+  {{ with .Params.links.paper }}
+  <a href="{{ . }}"
+     class="rounded-md border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition">
+    Paper
+  </a>
+  {{ end }}
+  {{ with .Params.links.data }}
+  <a href="{{ . }}" target="_blank" rel="noopener"
+     class="rounded-md border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition">
+    Data Archive
+  </a>
+  {{ end }}
+</div>
+{{ end }}
+
+{{ end }}

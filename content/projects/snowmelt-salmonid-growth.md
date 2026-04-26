@@ -9,6 +9,8 @@ links:
   paper: "/publications/cline-2022-snowmelt-growth/"
 tags: ["data", "salmonids", "snowmelt", "long-term monitoring"]
 featured: false
+theme: "population-dynamics"
+status: "active"
 ---
 
 Processed mark-recapture data, hydrological covariates, and growth model code for Cline et al. (2022). The dataset spans [X] years of annual sampling from [site/watershed placeholder] and is one of the longest continuous salmonid growth records in the [region].

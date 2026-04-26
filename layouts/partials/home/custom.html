@@ -134,44 +134,27 @@
 </section>
 {{ end }}
 
-{{/* ── Featured Projects ────────────────────────────────────────────── */}}
-{{ $projects := where site.RegularPages "Section" "projects" }}
-{{ $featured := where $projects ".Params.featured" true }}
-{{ if $featured }}
+{{/* ── Research Themes ──────────────────────────────────────────────── */}}
+{{ $themes := where site.RegularPages "Section" "research" }}
+{{ if $themes }}
 <section class="mb-12">
   <div class="flex items-center justify-between mb-6">
-    <h2 class="text-2xl font-bold text-neutral-800 dark:text-neutral-100">Featured Projects &amp; Tools</h2>
-    <a href="/projects/" class="text-sm text-primary-600 dark:text-primary-400 hover:underline">
-      All projects &rarr;
+    <h2 class="text-2xl font-bold text-neutral-800 dark:text-neutral-100">Research Themes</h2>
+    <a href="/research/" class="text-sm text-primary-600 dark:text-primary-400 hover:underline">
+      All research &rarr;
     </a>
   </div>
-  <div class="grid gap-6 sm:grid-cols-2">
-    {{ range $featured }}
-    <article class="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-6 shadow-sm hover:shadow-md transition">
-      <h3 class="font-bold text-neutral-800 dark:text-neutral-100 text-lg leading-snug mb-2">
+  <div class="grid gap-4 sm:grid-cols-2">
+    {{ range ($themes.ByParam "weight") }}
+    <article class="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-5 shadow-sm hover:shadow-md transition">
+      <h3 class="font-bold text-neutral-800 dark:text-neutral-100 text-base leading-snug mb-2">
         <a href="{{ .Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
           {{ .Title }}
         </a>
       </h3>
-      {{ if .Params.description }}
-      <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
-        {{ .Params.description }}
-      </p>
+      {{ with .Params.description }}
+      <p class="text-sm text-neutral-600 dark:text-neutral-400">{{ . }}</p>
       {{ end }}
-      <div class="flex flex-wrap gap-2">
-        {{ with .Params.links.github }}
-        <a href="{{ . }}" class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition"
-           target="_blank" rel="noopener">GitHub</a>
-        {{ end }}
-        {{ with .Params.links.demo }}
-        <a href="{{ . }}" class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition"
-           target="_blank" rel="noopener">Live Demo</a>
-        {{ end }}
-        {{ with .Params.links.paper }}
-        <a href="{{ . }}" class="text-xs border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition">
-          Paper</a>
-        {{ end }}
-      </div>
     </article>
     {{ end }}
   </div>
