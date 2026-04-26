@@ -11,6 +11,9 @@
          assets/img/banners/publications.jpg
 */}}
 
+{{/* Skip if the page handles its own hero banner */}}
+{{ if .Params.hero_banner }}{{ return }}{{ end }}
+
 {{ $banner := false }}
 
 {{/* 1. Page-specific (slug-named) */}}
