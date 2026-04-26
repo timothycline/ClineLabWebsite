@@ -1,7 +1,7 @@
 ---
 title: "Ben Weber presents at the Crawfords Scholar Showcase"
 date: 2026-04-21
-image: "/img/news/ben-weber-crawfords-showcase.jpg"
+image: "img/news/ben-weber-crawfords-showcase.jpg"
 tags: ["undergraduate research", "bull trout", "Glacier National Park", "conference"]
 ---
 

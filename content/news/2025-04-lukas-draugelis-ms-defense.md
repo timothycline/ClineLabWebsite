@@ -1,7 +1,7 @@
 ---
 title: "Lukas Draugelis successfully defends MS thesis"
 date: 2025-04-22
-image: "/img/news/lukas-draugelis-ms-defense.jpg"
+image: "img/news/lukas-draugelis-ms-defense.jpg"
 tags: ["graduate students", "thesis defense", "rainbow trout", "Flathead River"]
 ---
 
