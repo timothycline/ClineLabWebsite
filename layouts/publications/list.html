@@ -15,25 +15,10 @@
 */}}
 
 {{ range .Pages.ByDate.Reverse }}
-<article class="flex gap-4 mb-6 pb-6 border-b border-neutral-200 dark:border-neutral-700 last:border-0">
-
-  {{/* ── Thumbnail ── */}}
-  <div class="shrink-0">
-    {{ if .Params.image }}
-    <img src="{{ .Params.image | absURL }}"
-         alt="{{ .Title }} cover image"
-         class="w-20 h-20 object-cover rounded-md border border-neutral-200 dark:border-neutral-700">
-    {{ else }}
-    <div class="w-20 h-20 rounded-md bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 flex items-center justify-center">
-      <span class="text-xs font-bold text-primary-600 dark:text-primary-400 text-center leading-tight px-1">
-        {{ with .Params.year }}{{ . }}{{ else }}{{ .Date.Format "2006" }}{{ end }}
-      </span>
-    </div>
-    {{ end }}
-  </div>
+<article class="mb-6 pb-6 border-b border-neutral-200 dark:border-neutral-700 last:border-0">
 
   {{/* ── Citation ── */}}
-  <div class="flex-1 min-w-0">
+  <div>
     <h3 class="font-semibold text-neutral-800 dark:text-neutral-100 text-base leading-snug mb-1">
       <a href="{{ .Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
         {{ .Title }}
