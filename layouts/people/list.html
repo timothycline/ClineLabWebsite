@@ -37,9 +37,9 @@
     <h2 class="text-2xl font-semibold mb-6 text-neutral-800 dark:text-neutral-100 border-b border-neutral-200 dark:border-neutral-700 pb-2">
       {{ $label }}
     </h2>
-    <div class="flex flex-wrap justify-center gap-6">
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem;">
       {{ range $members }}
-      <div class="w-52">{{ partial "people/person-card.html" . }}</div>
+      <div style="flex:0 0 200px; width:200px;">{{ partial "people/person-card.html" . }}</div>
       {{ end }}
     </div>
   </section>
@@ -52,9 +52,9 @@
   <h2 class="text-2xl font-semibold mb-6 text-neutral-800 dark:text-neutral-100 border-b border-neutral-200 dark:border-neutral-700 pb-2">
     Alumni
   </h2>
-  <div class="flex flex-wrap justify-center gap-6">
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem;">
     {{ range $alumni }}
-    <div class="w-52">{{ partial "people/person-card.html" . }}</div>
+    <div style="flex:0 0 200px; width:200px;">{{ partial "people/person-card.html" . }}</div>
     {{ end }}
   </div>
 </section>
