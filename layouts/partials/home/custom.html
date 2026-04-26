@@ -217,20 +217,43 @@
     </a>
   </div>
 
+  {{ $newsGrads := slice
+    "linear-gradient(135deg,#1a8fe3 0%,#0d9ab5 100%)"
+    "linear-gradient(135deg,#10a37f 0%,#1a8fe3 100%)"
+    "linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%)"
+  }}
   <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-    {{ range $recent }}
-    <article class="cline-card p-6">
-      <span class="cline-date-chip">{{ .Date.Format "Jan 2, 2006" }}</span>
-      <h3 class="mt-3 font-semibold text-neutral-800 dark:text-neutral-100 leading-snug text-base">
-        <a href="{{ .Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
-          {{ .Title }}
-        </a>
-      </h3>
-      {{ if .Summary }}
-      <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400 line-clamp-3">
-        {{ .Summary | plainify }}
-      </p>
+    {{ range $i, $item := $recent }}
+    {{ $grad := index $newsGrads (mod $i (len $newsGrads)) }}
+    <article class="cline-card flex flex-col">
+      {{ with $item.Params.image }}
+        <div style="height:140px; overflow:hidden;">
+          <img src="{{ . }}" alt="{{ $item.Title }}" class="w-full h-full object-cover" loading="lazy">
+        </div>
+      {{ else }}
+        <div style="height:140px; background:{{ $grad }};" class="flex items-center justify-center">
+          <svg width="44" height="44" viewBox="0 0 64 64" fill="none" style="opacity:0.85;">
+            <path d="M8 32c8-14 32-20 48-12-6 4-10 8-10 12s4 8 10 12C40 52 16 46 8 32z" stroke="white" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="42" cy="28" r="2.5" fill="white"/>
+          </svg>
+        </div>
       {{ end }}
+      <div class="p-5 flex flex-col flex-1">
+        <span class="cline-date-chip mb-2">{{ $item.Date.Format "Jan 2, 2006" }}</span>
+        <h3 class="font-semibold text-neutral-800 dark:text-neutral-100 leading-snug text-base mb-2">
+          <a href="{{ $item.Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
+            {{ $item.Title }}
+          </a>
+        </h3>
+        {{ if $item.Summary }}
+        <p class="text-sm text-neutral-500 dark:text-neutral-400 line-clamp-3 flex-1">
+          {{ $item.Summary | plainify }}
+        </p>
+        {{ end }}
+        <a href="{{ $item.Permalink }}" class="mt-3 text-sm font-semibold text-primary-600 dark:text-primary-400 hover:text-primary-500 transition">
+          Read more &rarr;
+        </a>
+      </div>
     </article>
     {{ end }}
   </div>

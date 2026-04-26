@@ -1,0 +1,102 @@
+{{ define "main" }}
+<div class="px-0 py-8">
+
+  {{/* ── Page header ──────────────────────────────────────────────── */}}
+  <div class="mb-10">
+    <span class="cline-section-label">Lab Updates</span>
+    <h1 class="text-4xl font-black text-neutral-800 dark:text-neutral-100 mb-2">News</h1>
+    {{ with .Description }}
+    <p class="text-neutral-500 dark:text-neutral-400 max-w-2xl">{{ . }}</p>
+    {{ end }}
+  </div>
+
+  {{/* ── News card grid ────────────────────────────────────────────── */}}
+  {{ $news := .Pages.ByDate.Reverse }}
+  {{ if $news }}
+
+  {{/* Gradient presets cycle for items without a photo */}}
+  {{ $grads := slice
+    "linear-gradient(135deg,#1a8fe3 0%,#0d9ab5 100%)"
+    "linear-gradient(135deg,#10a37f 0%,#1a8fe3 100%)"
+    "linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%)"
+    "linear-gradient(135deg,#2563eb 0%,#4f46e5 100%)"
+    "linear-gradient(135deg,#0d9ab5 0%,#10a37f 100%)"
+    "linear-gradient(135deg,#7c3aed 0%,#4f46e5 100%)"
+  }}
+
+  <div class="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+    {{ range $i, $item := $news }}
+    {{ $grad := index $grads (mod $i (len $grads)) }}
+    <article class="cline-card flex flex-col">
+
+      {{/* Image or gradient placeholder */}}
+      {{ with $item.Params.image }}
+        <div class="overflow-hidden" style="height:180px;">
+          <img src="{{ . }}"
+               alt="{{ $item.Title }}"
+               class="w-full h-full object-cover transition duration-300 group-hover:scale-105"
+               loading="lazy">
+        </div>
+      {{ else }}
+        <div class="flex items-center justify-center" style="height:180px; background:{{ $grad }};">
+          {{/* Tag-based icon */}}
+          <svg width="52" height="52" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.85;">
+            {{ $tags := $item.Params.tags | default slice }}
+            {{ $hasField := false }}
+            {{ range $tags }}
+              {{ if or (eq . "field work") (eq . "fieldwork") }}{{ $hasField = true }}{{ end }}
+            {{ end }}
+            {{ if $hasField }}
+            {{/* Mountains */}}
+            <path d="M12 52L28 24l8 14 6-8 10 22H12z" stroke="white" stroke-width="2.5" stroke-linejoin="round"/>
+            {{ else }}
+            {{/* Fish */}}
+            <path d="M8 32c8-14 32-20 48-12-6 4-10 8-10 12s4 8 10 12C40 52 16 46 8 32z" stroke="white" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="42" cy="28" r="2.5" fill="white"/>
+            {{ end }}
+          </svg>
+        </div>
+      {{ end }}
+
+      {{/* Card body */}}
+      <div class="p-6 flex flex-col flex-1">
+        {{/* Tags */}}
+        {{ with $item.Params.tags }}
+        <div class="flex flex-wrap gap-1.5 mb-3">
+          {{ range first 3 . }}
+          <span class="text-xs px-2 py-0.5 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 font-medium">
+            {{ . }}
+          </span>
+          {{ end }}
+        </div>
+        {{ end }}
+
+        <span class="cline-date-chip mb-2">{{ $item.Date.Format "Jan 2, 2006" }}</span>
+
+        <h2 class="font-bold text-neutral-800 dark:text-neutral-100 text-base leading-snug mb-2">
+          <a href="{{ $item.Permalink }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition">
+            {{ $item.Title }}
+          </a>
+        </h2>
+
+        {{ if $item.Summary }}
+        <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed line-clamp-3 mb-4 flex-1">
+          {{ $item.Summary | plainify }}
+        </p>
+        {{ end }}
+
+        <a href="{{ $item.Permalink }}"
+           class="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-primary-600 dark:text-primary-400 hover:text-primary-500 transition">
+          Read more &rarr;
+        </a>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+
+  {{ else }}
+  <p class="text-neutral-500 dark:text-neutral-400">No news yet — check back soon.</p>
+  {{ end }}
+
+</div>
+{{ end }}
