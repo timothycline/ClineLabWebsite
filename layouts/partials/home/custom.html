@@ -1,72 +1,5 @@
 {{/* Custom homepage layout for Cline Lab */}}
 
-{{/* ── Photo Slideshow ──────────────────────────────────────────────────
-  Auto-discovers all images in assets/img/slideshow/
-  Drop any .jpg/.png/.webp file in there — it appears automatically.
-  Prefix filenames with 01-, 02-, etc. to control order.
-*/}}
-{{ $slides := resources.Match "img/slideshow/*" }}
-{{ if $slides }}
-{{ $processed := slice }}
-{{ range $slides }}
-  {{ if eq .MediaType.MainType "image" }}
-    {{ $img := .Resize "1400x600 webp q85 Center" }}
-    {{ $processed = $processed | append $img }}
-  {{ end }}
-{{ end }}
-
-<div style="width:100vw; position:relative; left:50%; transform:translateX(-50%); margin-bottom:2.5rem; overflow:hidden;"
-     x-data="{
-       current: 0,
-       total: {{ len $processed }},
-       autoplay: null,
-       start() { this.autoplay = setInterval(() => { this.current = (this.current + 1) % this.total }, 5000) },
-       pause() { clearInterval(this.autoplay) },
-       go(i) { this.current = i },
-       prev() { this.current = (this.current - 1 + this.total) % this.total },
-       next() { this.current = (this.current + 1) % this.total }
-     }"
-     x-init="start()"
-     @mouseenter="pause()"
-     @mouseleave="start()">
-
-  <div class="relative" style="height: 480px;">
-    {{ range $i, $img := $processed }}
-    <div x-show="current === {{ $i }}"
-         x-transition:enter="transition-opacity duration-700"
-         x-transition:enter-start="opacity-0"
-         x-transition:enter-end="opacity-100"
-         x-transition:leave="transition-opacity duration-700"
-         x-transition:leave-start="opacity-100"
-         x-transition:leave-end="opacity-0"
-         class="absolute inset-0">
-      <img src="{{ $img.RelPermalink }}"
-           width="{{ $img.Width }}"
-           height="{{ $img.Height }}"
-           alt="Lab photo {{ add $i 1 }}"
-           class="w-full h-full object-cover"
-           {{ if eq $i 0 }}loading="eager"{{ else }}loading="lazy"{{ end }}>
-    </div>
-    {{ end }}
-    <button @click="prev()"
-            class="absolute left-3 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/40 hover:bg-black/60 text-white w-10 h-10 flex items-center justify-center transition"
-            aria-label="Previous slide">&#8592;</button>
-    <button @click="next()"
-            class="absolute right-3 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/40 hover:bg-black/60 text-white w-10 h-10 flex items-center justify-center transition"
-            aria-label="Next slide">&#8594;</button>
-  </div>
-
-  <div class="flex justify-center gap-2 py-3 bg-neutral-100 dark:bg-neutral-900">
-    {{ range $i, $_ := $processed }}
-    <button @click="go({{ $i }})"
-            :class="current === {{ $i }} ? 'bg-primary-600 w-4' : 'bg-neutral-400 w-2'"
-            class="h-2 rounded-full transition-all duration-300"
-            aria-label="Go to slide {{ add $i 1 }}"></button>
-    {{ end }}
-  </div>
-</div>
-{{ end }}
-
 {{/* ── Lab Intro ────────────────────────────────────────────────────── */}}
 <section class="mb-12">
   <div class="max-w-3xl">
@@ -94,6 +27,79 @@
     </div>
   </div>
 </section>
+
+{{/* ── Photo Slideshow ──────────────────────────────────────────────────
+  Auto-discovers all images in assets/img/slideshow/
+  Drop any .jpg/.png/.webp file in there — it appears automatically.
+  Prefix filenames with 01-, 02-, etc. to control order.
+*/}}
+{{ $slides := resources.Match "img/slideshow/*" }}
+{{ if $slides }}
+{{ $processed := slice }}
+{{ range $slides }}
+  {{ if eq .MediaType.MainType "image" }}
+    {{ $img := .Resize "1200x webp q85" }}
+    {{ $processed = $processed | append $img }}
+  {{ end }}
+{{ end }}
+
+{{ if $processed }}
+<section class="mb-12">
+  <h2 class="text-2xl font-bold mb-4 text-neutral-800 dark:text-neutral-100">Lab Photos</h2>
+  <div class="relative rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-700 shadow-sm"
+       x-data="{
+         current: 0,
+         total: {{ len $processed }},
+         autoplay: null,
+         start() { this.autoplay = setInterval(() => { this.current = (this.current + 1) % this.total }, 5000) },
+         pause() { clearInterval(this.autoplay) },
+         go(i) { this.current = i },
+         prev() { this.current = (this.current - 1 + this.total) % this.total },
+         next() { this.current = (this.current + 1) % this.total }
+       }"
+       x-init="start()"
+       @mouseenter="pause()"
+       @mouseleave="start()">
+
+    {{/* Grid-stacking: all images occupy the same cell; only the visible one
+         drives the container height, giving each photo its native aspect ratio */}}
+    <div style="display:grid; grid-template-columns:1fr;">
+      {{ range $i, $img := $processed }}
+      <img src="{{ $img.RelPermalink }}"
+           width="{{ $img.Width }}"
+           height="{{ $img.Height }}"
+           alt="Lab photo {{ add $i 1 }}"
+           style="grid-row:1; grid-column:1; width:100%; height:auto; display:block;"
+           x-show="current === {{ $i }}"
+           x-transition:enter="transition-opacity duration-700"
+           x-transition:enter-start="opacity-0"
+           x-transition:enter-end="opacity-100"
+           x-transition:leave="transition-opacity duration-700"
+           x-transition:leave-start="opacity-100"
+           x-transition:leave-end="opacity-0"
+           {{ if eq $i 0 }}loading="eager"{{ else }}loading="lazy"{{ end }}>
+      {{ end }}
+    </div>
+
+    <button @click="prev()"
+            class="absolute left-3 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/40 hover:bg-black/60 text-white w-10 h-10 flex items-center justify-center transition"
+            aria-label="Previous slide">&#8592;</button>
+    <button @click="next()"
+            class="absolute right-3 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/40 hover:bg-black/60 text-white w-10 h-10 flex items-center justify-center transition"
+            aria-label="Next slide">&#8594;</button>
+
+    <div class="flex justify-center gap-2 py-3 bg-neutral-100 dark:bg-neutral-900">
+      {{ range $i, $_ := $processed }}
+      <button @click="go({{ $i }})"
+              :class="current === {{ $i }} ? 'bg-primary-600 w-4' : 'bg-neutral-400 w-2'"
+              class="h-2 rounded-full transition-all duration-300"
+              aria-label="Go to slide {{ add $i 1 }}"></button>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
 
 {{/* ── Recent News ──────────────────────────────────────────────────── */}}
 {{ $news := where site.RegularPages "Section" "news" }}
