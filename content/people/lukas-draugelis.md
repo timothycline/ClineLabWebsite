@@ -1,10 +1,9 @@
 ---
 title: "Lukas Draugelis"
 date: 2023-08-15
-role: "MS Student"
-status: "alumni"
+role: "PhD Student"
+status: "current"
 year_started: 2023
-year_ended: 2025
 photo: "img/people/lukas-draugelis.jpg"
 email: "lukas.draugelis@gmail.com"
 links:
@@ -12,4 +11,4 @@ links:
 weight: 10
 ---
 
-Lukas completed his MS in 2025, studying rainbow and hybrid trout production dynamics in the Flathead River, MT. His thesis examined how life-history strategies vary across an active rainbow trout invasion front, with direct implications for native species conservation and invasive species suppression efforts.
+Lukas completed his MS in 2025, examining sources of hybrid trout production in the Flathead River system using novel isotopic and genetic tools. He is now continuing in the lab as a PhD student, with his dissertation focused on life-history diversity at the leading edge of the rainbow trout invasion.
