@@ -32,7 +32,7 @@
       {{/* Image or gradient placeholder */}}
       {{ with $item.Params.image }}
         <div class="overflow-hidden" style="height:180px;">
-          <img src="{{ . | relURL }}"
+          <img src="{{ . | absURL }}"
                alt="{{ $item.Title }}"
                class="w-full h-full object-cover transition duration-300 group-hover:scale-105"
                loading="lazy">
