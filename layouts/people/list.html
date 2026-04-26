@@ -39,12 +39,12 @@
     <h2 class="text-2xl font-semibold mb-6 text-neutral-800 dark:text-neutral-100 border-b border-neutral-200 dark:border-neutral-700 pb-2">
       {{ $label }}
     </h2>
-    {{/* Grid: strict 2 columns of 300px, centered. Last item spans both
+    {{/* Grid: strict 2 columns of 400px, centered. Last item spans both
          columns and self-centers when total count is odd. */}}
-    <div style="display:grid; grid-template-columns:repeat(2,300px); justify-content:center; gap:1.5rem;">
+    <div style="display:grid; grid-template-columns:repeat(2,400px); justify-content:center; gap:1.5rem;">
       {{ range $i, $member := $members }}
       {{ $isLast := eq (add $i 1) $count }}
-      <div style="{{ if and $isLast $oddCount }}grid-column:1/3; justify-self:center;{{ end }}width:300px;">
+      <div style="{{ if and $isLast $oddCount }}grid-column:1/3; justify-self:center;{{ end }}width:400px;">
         {{ partial "people/person-card.html" $member }}
       </div>
       {{ end }}
@@ -61,10 +61,10 @@
   <h2 class="text-2xl font-semibold mb-6 text-neutral-800 dark:text-neutral-100 border-b border-neutral-200 dark:border-neutral-700 pb-2">
     Alumni
   </h2>
-  <div style="display:grid; grid-template-columns:repeat(2,300px); justify-content:center; gap:1.5rem;">
+  <div style="display:grid; grid-template-columns:repeat(2,400px); justify-content:center; gap:1.5rem;">
     {{ range $i, $member := $alumni }}
     {{ $isLast := eq (add $i 1) $count }}
-    <div style="{{ if and $isLast $oddCount }}grid-column:1/3; justify-self:center;{{ end }}width:300px;">
+    <div style="{{ if and $isLast $oddCount }}grid-column:1/3; justify-self:center;{{ end }}width:400px;">
       {{ partial "people/person-card.html" $member }}
     </div>
     {{ end }}
